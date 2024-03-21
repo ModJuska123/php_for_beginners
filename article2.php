@@ -1,12 +1,12 @@
 <?php
 
 $db_host = "localhost";
-$db_name = "cms";
-$db_user = "cms_www";
-$db_pass = "_W@RXE)5dHtGSDJ_";
+$db_name = "cms_new";
+$db_user = "cmsnew_www";
+$db_pass = "TPoPhUXeTuHqtTwM";
 
 $conn = mysqli_connect($db_host, $db_name, $db_user, $db_pass);
-var_dump($conn);
+
 
 if (mysqli_connect_error()) {
     echo mysqli_connect_error();
