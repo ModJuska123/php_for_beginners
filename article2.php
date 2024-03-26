@@ -5,16 +5,18 @@ $db_name = "lecture";
 $db_user = "root";
 $db_pass = "";
 
-$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name); //prijungia DB
 
-if (mysqli_connect_error()) {
+if (mysqli_connect_error()) {       // parodo drijungimo klaida, jeigu..
     echo mysqli_connect_error();
     exit;
-}
+}                                   // ..->...
+echo "Conected successfully.";
+
 
 $sql = "SELECT *
         FROM article
-        WHERE id = 2";
+        ORDER BY published_at;";
 
 $results = mysqli_query($conn, $sql);
 
