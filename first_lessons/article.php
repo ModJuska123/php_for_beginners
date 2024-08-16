@@ -2,7 +2,7 @@
 
 $articles = [
     [
-        "title"   => "First post",
+        "title"   => "First post Ką tu?",
         "content" => "This is the first of many posts!"
     ],
     [
