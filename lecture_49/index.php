@@ -17,7 +17,7 @@ if (mysqli_connect_error()) {
 //susikonektinu su lentele (tęsinys)
 $sql = "SELECT *
         FROM article
-        WHERE id = 1;";
+        ORDER BY published_at;";
 
 //priskiriu kintamajį rezultatui
 $results = mysqli_query($conn, $sql);
@@ -26,7 +26,7 @@ $results = mysqli_query($conn, $sql);
 if ($results === false) {
     echo mysqli_error($conn);
 } else {
-    $article = mysqli_fetch_assoc($results);  //norint, pakeisti į vienos eilutės atvaizdavimą keičiama čia...
+    $articles = mysqli_fetch_all($results, MYSQLI_ASSOC);
 }
 
 //vaizdo pateikimas html
@@ -46,17 +46,22 @@ if ($results === false) {
     </header>
 
     <main>
-        <?php if ($article === null): ?> <!-- norint, pakeisti į vienos eilutės atvaizdavimą keičiama čia..... -->
-            <p>Article not found.</p>
-
+        <?php if (empty($articles)): ?>
+            <p>No articles found.</p>
         <?php else: ?>
-            
-            <!-- norint, pakeisti į vienos eilutės atvaizdavimą keičiama čia..... -->
-            <article>
-                <h2><?= $article['title']; ?></h2>
-                <p><?= $article['content']; ?></p>
-            </article>
 
+            <ul>
+                <?php foreach ($articles as $article): ?>
+                    <li>
+                        <article>
+                            <h2>
+                                <a href="article.php?id=<?= $article['id']; ?>"> <?= $article['title']; ?></a> <!-- papildžius eilutę href=.., galima pagal t1 id nueiti į article.php ir iš ten atsidaryti konkrečią eil. pagal id -->
+                            </h2>
+                            <p><?= $article['content']; ?></p>
+                        </article>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
 
         <?php endif; ?>
     </main>

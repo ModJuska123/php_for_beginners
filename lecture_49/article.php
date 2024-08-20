@@ -17,7 +17,7 @@ if (mysqli_connect_error()) {
 //susikonektinu su lentele (tęsinys)
 $sql = "SELECT *
         FROM article
-        WHERE id = 1;";
+        WHERE id = " . $_GET['id'];
 
 //priskiriu kintamajį rezultatui
 $results = mysqli_query($conn, $sql);
@@ -42,7 +42,7 @@ if ($results === false) {
 <body>
 
     <header>
-        <h1>My blog</h1>
+        <h1><a href="index.php">My blog</a></h1>
     </header>
 
     <main>
