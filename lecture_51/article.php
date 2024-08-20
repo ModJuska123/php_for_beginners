@@ -1,11 +1,16 @@
 <?php
 
-include 'database.php';
+include 'sql.php';
+
+//saugumo patikra, tik skaiciai
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 //susikonektinu su lentele (tęsinys)
 $sql = "SELECT *
         FROM article
         WHERE id = " . $_GET['id'];
+
+var_dump($sql);
 
 //priskiriu kintamajį rezultatui
 $results = mysqli_query($conn, $sql);
@@ -16,6 +21,8 @@ if ($results === false) {
 } else {
     $article = mysqli_fetch_assoc($results);  //norint, pakeisti į vienos eilutės atvaizdavimą keičiama čia...
 }
+} else {
+    $article = null;}
 
 //vaizdo pateikimas html
 ?>

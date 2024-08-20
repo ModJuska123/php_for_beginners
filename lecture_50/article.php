@@ -1,11 +1,29 @@
 <?php
 
-include 'database.php';
+//priskiriu kintamuosius:
+$db_host = "localhost";
+$db_name = "lecture";
+$db_user = "root";
+$db_pass = "";
+
+//susikonektinu su lentele (db)
+$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+
+//err pranešimas nepavykus
+if (mysqli_connect_error()) {
+    echo mysqli_connect_error();
+    exit;
+}
+
+//saugumo patikra, tik skaiciai
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 //susikonektinu su lentele (tęsinys)
 $sql = "SELECT *
         FROM article
         WHERE id = " . $_GET['id'];
+
+var_dump($sql);
 
 //priskiriu kintamajį rezultatui
 $results = mysqli_query($conn, $sql);
@@ -16,6 +34,8 @@ if ($results === false) {
 } else {
     $article = mysqli_fetch_assoc($results);  //norint, pakeisti į vienos eilutės atvaizdavimą keičiama čia...
 }
+} else {
+    $article = null;}
 
 //vaizdo pateikimas html
 ?>
