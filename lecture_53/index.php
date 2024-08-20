@@ -1,6 +1,6 @@
 <?php
 
-require 'sql.php';
+require 'includes/sql.php';
 
 //susikonektinu su lentele (tęsinys)
 $sql = "SELECT *
@@ -20,7 +20,7 @@ if ($results === false) {
 //vaizdo pateikimas html
 ?>
 
-<?= require 'header.php'; ?>
+<?= require 'includes/header.php'; ?>
 
     <header>
         <h1>My blog</h1>
@@ -45,4 +45,4 @@ if ($results === false) {
             </ul>
 
         <?php endif; ?>
-    <?= require 'footer.php'; ?>
+    <?= require 'includes/footer.php'; ?>

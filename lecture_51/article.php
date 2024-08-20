@@ -1,6 +1,6 @@
 <?php
 
-include 'sql.php';
+require 'sql.php';
 
 //saugumo patikra, tik skaiciai
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
@@ -26,15 +26,8 @@ if ($results === false) {
 
 //vaizdo pateikimas html
 ?>
-<!DOCTYPE html>
-<html>
 
-<head>
-    <title>My blog</title>
-    <meta charset="utf-8">
-</head>
-
-<body>
+<?=require 'header.php'; ?>
 
     <header>
         <h1><a href="index.php">My blog</a></h1>
@@ -54,7 +47,4 @@ if ($results === false) {
 
 
         <?php endif; ?>
-    </main>
-</body>
-
-</html>
+    
