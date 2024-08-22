@@ -1,3 +1,11 @@
+<?php 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    var_dump($_POST);
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +14,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="process_form.php"> 
+    <form method="post"> 
 
         <input name="username">
 
